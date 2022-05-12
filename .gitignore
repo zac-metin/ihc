@@ -1,2 +1,4 @@
-*/node_modules/*
-node_modules
+
+# node_modules
+
+# removed node modules from gitignore so you don't have to npm install
