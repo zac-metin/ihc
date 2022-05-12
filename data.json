@@ -1,0 +1,70 @@
+{
+    "customers": [{
+        "id": 1,
+        "company": "acme"
+    },
+    {
+        "id": 2,
+        "company": "microsoft"
+    }],
+    "orders": [
+    {
+        "id": 1,
+        "customer_id": "1",
+        "date_of_order": 1652122166
+    },
+    {
+        "id": 2,
+        "customer_id": "2",
+        "date_of_order": 1652122149
+    }],
+    "order_details": [
+        {
+            "id": 1,
+            "order_id": 1,
+            "po_line": 1,
+            "item_id": 1,
+            "quantity": 1,
+            "date_required": 1652122149,
+            "special_instructions": "This is a very long piece of test up to 2000 characters"
+        },
+        {
+            "id": 2,
+            "order_id": 1,
+            "po_line": 2,
+            "item_id": 3,
+            "quantity": 4,
+            "date_required": 1652121149,
+            "special_instructions": "Be careful with the fluffy dice"
+        }],
+        "items": [
+        {
+            "id": 1,
+            "item_name": "wheel",
+            "in_stock": true,
+            "cost_price": 400.10,
+            "sale_price": 500.03
+        },
+        {
+            "id": 2,
+            "item_name": "headlight",
+            "in_stock": false,
+            "cost_price": 1000.04,
+            "sale_price": 1400.40
+        },
+        {
+            "id": 3,
+            "item_name": "fluffy dice",
+            "in_stock": true,
+            "cost_price": 50.00,
+            "sale_price": 65.93
+        },
+        {
+            "id": 4,
+            "item_name": "tyre",
+            "in_stock": true,
+            "cost_price": 450.01,
+            "sale_price": 465.92
+        }
+    ]
+}
