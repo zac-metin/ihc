@@ -1,6 +1,11 @@
 import './PurchaseOrderGrid.css';
 
-const PurchaseOrderGrid = ({orders, orderDetails, customers}) => (
+import { 
+    calculateSalesPrice, 
+    calculateCostPrice 
+} from './utils';
+
+const PurchaseOrderGrid = ({orders, orderDetails, customers, items}) => (
     <div className="purchaseOrderGrid">
         <div>Customer</div>
         <div>Total Cost Value</div>
@@ -8,8 +13,9 @@ const PurchaseOrderGrid = ({orders, orderDetails, customers}) => (
         {orders.map(order => 
             <>
                 <div>{customers.find(customer => customer.id === Number(order.customer_id)).company}</div>
-                <div>"Did Not Finish"</div>
-                <div>"Did Not Finish"</div>
+                <div>{calculateSalesPrice({orders, order_details: orderDetails, customers, items}, order.id)}</div>
+                <div>{calculateCostPrice({orders, order_details: orderDetails, customers, items}, order.id)}</div>
+                
             </>
         )}
     </div>

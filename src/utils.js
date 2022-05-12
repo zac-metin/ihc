@@ -6,16 +6,32 @@ export const getOrderDetails = async () => await getDataByType('order_details');
 
 export const getCustomers = async () => await getDataByType('customers');
 
+export const getItems = async () => await getDataByType('items');
+
 export const getDataByType = (type) => fetchEntity(type);
 
 export const getSalePrice = (items, item_id) => items.find(item => item.id === item_id)?.sale_price;
 
-export const calculateSalesPrice = (data, orderId) => {
+export const getCostPrice = (items, item_id) => items.find(item => item.id === item_id)?.cost_price;
+
+// export const calculateSalesPrice = (data, orderId) => {
+//     const { order_details, items } = data;
+//     const orderDetails = order_details.filter(order => order.order_id === orderId);
+
+//     return orderDetails.reduce((prev, current) => 
+//         getSalePrice(items, current.item_id) * current.quantity + prev, 0);
+// }
+
+export const calculateCostPrice = (data, orderId) => calculatePrice(data, orderId, getCostPrice);
+
+export const calculateSalesPrice = (data, orderId) => calculatePrice(data, orderId, getSalePrice);
+
+export const calculatePrice = (data, orderId, calculate) => {
     const { order_details, items } = data;
     const orderDetails = order_details.filter(order => order.order_id === orderId);
 
     return orderDetails.reduce((prev, current) => 
-        getSalePrice(items, current.item_id) * current.quantity + prev, 0);
+        calculate(items, current.item_id) * current.quantity + prev, 0);
 }
 
 export const fetchEntity = (entity) => 
